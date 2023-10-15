@@ -6,7 +6,7 @@ app = Flask("__name__")
 # def index():
 #     return render_template("index.html")
 
-def gfg():
+def gfg(): # <-- THIS NAME HAS TO MATCH THE action="{{ url_for('gfg')}}" IN FORM (index.html)
     if request.method == "POST":
        # getting input with name = fname in HTML form
        first_name = request.form.get("fname")
