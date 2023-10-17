@@ -1,0 +1,39 @@
+body
+{
+    margin: 0;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+}
+
+.chat_box
+{
+    height: 95svh;
+    width: fit-content;
+    padding: 1em;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.chat_box > form
+{
+    display: flex;
+}
+
+.chat_box > form > input
+{
+    margin: 0 5px 0 0;
+}
+
+.response_box
+{
+    height: 95svh;
+    width: 95%;
+    padding: 1em;
+    border: 1px solid black;
+}
+
+.response_box > h1
+{
+    text-align: center;
+}
