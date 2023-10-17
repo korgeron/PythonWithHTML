@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <!--    <link rel="stylesheet" href="/static/styles.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
 </head>
 <body>
-<h1>Hello World!!</h1>
+<div class="card">
+    <h1>Hello There!</h1>
+    <form action="/" method="POST">
+        <input name="user_value" type="text">
+        <button type="submit">Add Response!</button>
+    </form>
+</div>
 
-<form action="{{ url_for('gfg')}}" method="post">
-<label for="firstname">First Name:</label>
-<input type="text" id="firstname" name="fname" placeholder="firstname">
-<label for="lastname">Last Name:</label>
-<input type="text" id="lastname" name="lname" placeholder="lastname">
-<button type="submit">Login</button>
+<div class="response_card">
+    <h1>Responses!</h1>
+    {% for test in tests %}
+    <div class="text_bar">
+        <p>{{ tests[test] }}</p>
+        <a href="/delete/{{test}}" class="delete">x</a>
+    </div>
 
+    {% endfor %}
+</div>
 
 </body>
 </html>

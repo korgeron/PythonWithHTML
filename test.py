@@ -1,21 +1,35 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask("__name__")
 
-@app.route("/", methods=["GET", "POST"])
-# def index():
-#     return render_template("index.html")
 
-def gfg(): # <-- THIS NAME HAS TO MATCH THE action="{{ url_for('gfg')}}" IN FORM (index.html)
+data_base = {}
+def get_last_index(db):
+    if len(db) != 0:
+        copy = db.copy()
+        last_instance = copy.popitem()
+        return last_instance[0]
+    else:
+        return -1
+
+
+@app.route("/", methods=["POST", "GET"])
+def index():
+
     if request.method == "POST":
-       # getting input with name = fname in HTML form
-       first_name = request.form.get("fname")
-       print(first_name)
-       # getting input with name = lname in HTML form
-       last_name = request.form.get("lname")
-       print(last_name)
-       return "Your name is "+first_name + last_name
-    return render_template("index.html")
+        user_value = request.form.get("user_value")
+        key = get_last_index(data_base) + 1
+        print(key)
+        data_base.update({key:user_value})
+        return redirect("/")
+
+    return render_template("index.html", tests=data_base)
+
+@app.route("/delete/<id>")
+def delete(id):
+    data_base.pop(int(id))
+    return redirect("/")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
