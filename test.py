@@ -19,7 +19,7 @@ def index():
     if request.method == "POST":
         user_value = request.form.get("user_value")
         key = get_last_index(data_base) + 1
-        print(key)
+        print("NEW_INDEX = " + str(key))
         data_base.update({key:user_value})
         return redirect("/")
 
@@ -27,6 +27,7 @@ def index():
 
 @app.route("/delete/<id>")
 def delete(id):
+    print("ID = " + id)
     data_base.pop(int(id))
     return redirect("/")
 
