@@ -9,5 +9,4 @@ About Project:
 About dict_storage.py:
 
     1. This file stores chat data in a dictionary opposed to a database.
-
-This is only for basic learning purposes. 
+    (NOTES) This is only for basic learning purposes. 
