@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <!--    <link rel="stylesheet" href="/static/styles.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='dict_storage.css')}}">
+</head>
+<body>
+<div class="card">
+    <h1>Hello There!</h1>
+    <form action="/" method="POST">
+        <input name="user_value" type="text">
+        <button type="submit">Add Response!</button>
+    </form>
+</div>
+
+<div class="response_card">
+    <h1>Responses!</h1>
+    {% for test in tests %}
+    <div class="text_bar">
+        <p>{{ tests[test] }}</p>
+        <a href="/delete/{{test}}" class="delete">x</a>
+    </div>
+
+    {% endfor %}
+</div>
+
+</body>
+</html>

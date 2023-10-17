@@ -23,7 +23,7 @@ def index():
         data_base.update({key:user_value})
         return redirect("/")
 
-    return render_template("index.html", tests=data_base)
+    return render_template("dict_storage.html", tests=data_base)
 
 @app.route("/delete/<id>")
 def delete(id):
