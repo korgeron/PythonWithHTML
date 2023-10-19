@@ -46,9 +46,9 @@ from sqlalchemy.orm import Session
 """
 engine = create_engine("sqlite:///user.db", echo=True)
 
-
 # TODO: Setting up table info with metadata
 from sqlalchemy import MetaData, Table, Column, Integer, String, ForeignKey
+
 meta_data = MetaData()
 
 user_table = Table(
@@ -57,7 +57,6 @@ user_table = Table(
     Column("id", Integer, primary_key=True),
     Column("name", String(15), nullable=False)
 )
-
 
 """
     The messages_table holds the ForeignKey
@@ -74,7 +73,7 @@ messages_table = Table(
 """
     meta_data.create_all(engine) = This will create the tables made above
 """
-# meta_data.create_all(engine)
+meta_data.create_all(engine)
 
 """
     meta_data.drop_all(engine) = This will drop all tables in database
@@ -82,7 +81,7 @@ messages_table = Table(
 # meta_data.drop_all(engine)
 
 
-#TODO: SHOWS WHERE I LEFT OFF IN SQLAlchemy Documentation
+# TODO: SHOWS WHERE I LEFT OFF IN SQLAlchemy Documentation
 """
     LAST LEFT OFF = Using ORM Declarative Forms to Define Table Metadata
     LOCATION = Working with Database Metadata
