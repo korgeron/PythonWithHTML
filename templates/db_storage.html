@@ -6,19 +6,26 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Database Storage</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='db_storage.css') }}">
 </head>
 <body>
 <div class="chat_box">
     <h1>Hello There!</h1>
-    <form action="" method="POST">
+    <form action="/" method="POST">
         <input type="text" name="user_input">
         <button type="submit">Send</button>
     </form>
 </div>
 <div class="response_box">
     <h1>Responses!</h1>
+    {% for obj in messages %}
 
+        <div class="message_box">
+            <p class="message">{{ obj.message }}</p>
+            <a class="delete_btn" href="/delete/{{obj.id}}">x</a>
+        </div>
+
+    {% endfor %}
 </div>
 </body>
 </html>

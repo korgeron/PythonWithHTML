@@ -37,3 +37,25 @@ body
 {
     text-align: center;
 }
+
+.message_box
+{
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid lightgrey;
+}
+
+.delete_btn
+{
+    text-decoration: none;
+    color: grey;
+    transition: .5s ease;
+}
+
+.delete_btn:hover
+{
+    cursor: pointer;
+    color: black;
+}
