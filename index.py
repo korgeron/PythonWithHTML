@@ -1,10 +1,11 @@
 from flask import Flask, render_template, redirect
 from sqlalchemy import create_engine
-# from sqlalchemy.orm
+from sqlalchemy.orm import Session
 
 app = Flask("__name__")
 
-# engine = create_engine("sqlite:///chat.db", echo=True)
+engine = create_engine("sqlite:///chat.db", echo=True)
+session = Session(engine)
 
 
 @app.route("/")
