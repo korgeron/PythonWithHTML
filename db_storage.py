@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request
-from sqlalchemy import create_engine, select, Integer, String, delete
+from sqlalchemy import create_engine, select, Integer, String, delete, update
 from sqlalchemy.orm import Session, DeclarativeBase, mapped_column
 
 engine = create_engine("sqlite:///chat.db", echo=True)
@@ -41,6 +41,25 @@ def delete_message(ID):
     with Session(engine) as session:
         session.execute(clear_message)
         session.commit()
+    return redirect("/")
+
+
+@app.route("/update/<ID>")
+def update_message_landing_page(ID):
+    print(ID)
+    with Session(engine) as session:
+        message_to_update = session.execute(select(Messages).where(Messages.id == ID))
+        return render_template("update_message.html", update=message_to_update)
+
+
+@app.route("/update_message", methods=["POST", "GET"])
+def message_updated():
+    if request.method == "POST":
+        new_message = request.form["message"]
+        message_id = request.form["message_id"]
+        with Session(engine) as session:
+            session.execute(update(Messages).where(Messages.id == message_id).values(message=new_message))
+            session.commit()
     return redirect("/")
 
 

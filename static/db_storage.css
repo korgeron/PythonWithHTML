@@ -8,6 +8,7 @@ body
 
 .chat_box
 {
+    background: lightgrey;
     height: 95svh;
     width: fit-content;
     padding: 1em;
@@ -43,8 +44,14 @@ body
     font-size: 18px;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     border-bottom: 1px solid lightgrey;
+}
+
+.actions
+{
+    display: flex;
+    flex-direction: column;
 }
 
 .delete_btn
@@ -55,6 +62,19 @@ body
 }
 
 .delete_btn:hover
+{
+    cursor: pointer;
+    color: black;
+}
+
+.update_btn
+{
+    text-decoration: none;
+    color: grey;
+    transition: .5s ease;
+}
+
+.update_btn:hover
 {
     cursor: pointer;
     color: black;

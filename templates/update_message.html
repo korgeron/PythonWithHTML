@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Message</title>
+</head>
+<body>
+{% for obj in update %}
+    <p>{{ obj[0].message }}</p>
+<form action="/update_message" method="POST">
+    <input name="message" type="text"/>
+    <input type="hidden" name="message_id" value="{{ obj[0].id }}">
+    <button type="submit">Update</button>
+</form>
+{% endfor %}
+</body>
+</html>

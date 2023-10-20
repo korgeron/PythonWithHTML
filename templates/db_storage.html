@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='db_storage.css') }}">
 </head>
 <body>
+<input type="hidden" value="testing" name="test">
 <div class="chat_box">
     <h1>Hello There!</h1>
     <form action="/" method="POST">
-        <input type="text" name="user_input">
+        <input type="text" name="user_input"/>
         <button type="submit">Send</button>
     </form>
 </div>
@@ -22,7 +23,10 @@
 
         <div class="message_box">
             <p class="message">{{ obj.message }}</p>
-            <a class="delete_btn" href="/delete/{{obj.id}}">x</a>
+            <div class="actions">
+                <a class="delete_btn" href="/delete/{{obj.id}}">x</a>
+                <a class="update_btn" href="/update/{{obj.id}}">o</a>
+            </div>
         </div>
 
     {% endfor %}
