@@ -23,8 +23,8 @@ app = Flask("__name__")
 @app.route("/", methods=["POST", "GET"])
 def index():
     if request.method == "POST":
-        message_text = request.form["user_input"] # <-- This will return Error if no value exists
-        # message_text = request.form.get("user_input") <-- Will not return Error will return none
+        # message_text = request.form["user_input"] # <-- This will return Error if no value exists
+        message_text = request.form.get("user_input")  # <-- Will not return Error will return none
         message_to_store = Messages(id=None, message=message_text)
         with Session(engine) as session:
             session.add(message_to_store)
@@ -37,8 +37,8 @@ def index():
 
 
 @app.route("/delete/<ID>")
-def delete_message(ID : int): # <-- this int is to show what type it is for other developers
-    clear_message = delete(Messages).where(Messages.id == ID)
+def delete_message(message_id: int):  # <-- this int is to show what type it is for other developers
+    clear_message = delete(Messages).where(Messages.id == message_id)
     with Session(engine) as session:
         session.execute(clear_message)
         session.commit()
@@ -46,18 +46,17 @@ def delete_message(ID : int): # <-- this int is to show what type it is for othe
 
 
 @app.route("/update/<ID>")
-def update_message_landing_page(ID):
-    print(ID)
+def update_message_landing_page(message_id: int):
     with Session(engine) as session:
-        message_to_update = session.execute(select(Messages).where(Messages.id == ID))
+        message_to_update = session.execute(select(Messages).where(Messages.id == message_id))
         return render_template("update_message.html", update=message_to_update)
 
 
 @app.route("/update_message", methods=["POST", "GET"])
 def message_updated():
     if request.method == "POST":
-        new_message = request.form["message"]
-        message_id = request.form["message_id"]
+        new_message = request.form.get("message")
+        message_id = request.form.get("message_id")
         with Session(engine) as session:
             session.execute(update(Messages).where(Messages.id == message_id).values(message=new_message))
             session.commit()
