@@ -83,6 +83,10 @@ table_frame = pd.DataFrame({
 
 print("\nTABLE TO BE EXPORTED... \n" + "\n" + str(table_frame))
 
+"""
+    Add table styling 
+"""
+
 
 """
     Saves file to the Desktop
