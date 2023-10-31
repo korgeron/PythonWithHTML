@@ -92,6 +92,6 @@ print("\nTABLE TO BE EXPORTED... \n" + "\n" + str(table_frame))
     Saves file to the Desktop
     Must have xlsxwriter to export as .xlsx file
 """
-table_frame.to_excel(desktop + "/people_chart.xlsx", sheet_name="People Data", index=False)
+# table_frame.to_excel(desktop + "/people_chart.xlsx", sheet_name="People Data", index=False)
 
 
